@@ -27,9 +27,10 @@
 			$query->execute($input);
 		}
 		
-		public function select($from, $fields = '*', $where = null){
+		public function select($from, $fields = '*', $where = null, $limit = null){
 			$query = $this->connection->prepare('SELECT '.$fields.' FROM '.$from.
-			($where ? ' WHERE '.$where : '')
+			($where ? ' WHERE '.$where : '').
+			($limit ? ' LIMIT '.$limit : '')
 			);
 			$query->execute();
 			return $query -> fetchAll(PDO::FETCH_ASSOC);
