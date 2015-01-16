@@ -35,7 +35,7 @@
 			array_push($songs, NULL);
 		}
 	}
-//	for($i=0;$i<count($songs);$i++) {
-//		$db->insert('tracks', $songs[$i]);
-//	}
+	for($i=0;$i<count($songs);$i++) {
+		$db->insert('tracks', $songs[$i]);
+	}
 ?>

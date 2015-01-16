@@ -2,6 +2,10 @@
 
 Simple music indexer script. 
 
-Requirements:
+##Requirements
 * PHP
 * getID3 libary(included in source code, for now)
+
+##Using
+First, take executable rights
+>chmod +x indexer.php
