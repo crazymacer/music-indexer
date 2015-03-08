@@ -6,6 +6,9 @@
 			'user' => 'root',
 			'password' => 'rootroot',
 			'dbname' => 'music'
+		],
+		'music' => [
+			'dir' => '/home/Music'
 		]
 	]
 ?>
