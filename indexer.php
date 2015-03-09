@@ -38,10 +38,10 @@
 			$artist = $trackInfo["tags"]["id3v2"]["artist"][0];
 			$album = $trackInfo["tags"]["id3v2"]["album"][0];			
 			
-			if(array_search($artist, $artists) === false){
+			if(array_search($artist, $artists) == false){
 				array_push($artists, $artist);
 			}
-			if(array_search($album, $albums) === false){
+			if(array_search($album, $albums) == false){
 				array_push($albums, $album);
 			}
 			
@@ -60,22 +60,21 @@
 		}
 	}
 	
-	for($i=0;$i<count($artists);$i++){
+	foreach($artists as $artist){
 		$tmp = [
 			'id' => NULL,
-			'artist' => $artists[$i]
+			'artist' => $artist
 		];
 		$db->insert('artists', $tmp);
 	}
-	for($i=0;$i<count($albums);$i++){
+	foreach($albums as $album){
 		$tmp = [
 			'id' => NULL,
-			'album' => $albums[$i]
+			'album' => $album
 		];
 		$db->insert('albums', $tmp);
 	}
-	for($i=0;$i<count($tracks);$i++){
-		$db->insert('tracks', $tracks[$i]);
+	foreach($tracks as $track){
+		$db->insert('tracks', $track);
 	}
-	//print_r($artists);
 ?>
