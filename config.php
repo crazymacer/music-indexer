@@ -8,7 +8,7 @@
 			'dbname' => 'music'
 		],
 		'music' => [
-			'dir' => '/home/Music'
+			'dir' => '/home/Music/College'
 		]
 	]
 ?>

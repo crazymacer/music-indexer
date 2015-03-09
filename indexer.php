@@ -33,7 +33,6 @@
 	
 	for($i=0;$i<$count;$i++) {
 		$trackInfo = $getID3->analyze($out[$i]);
-		echo "Processed file: {$i}/{$count} ({$trackInfo["filenamepath"]})\n";
 		if(isset($trackInfo["tags"]["id3v2"])){
 			$artist = $trackInfo["tags"]["id3v2"]["artist"][0];
 			$album = $trackInfo["tags"]["id3v2"]["album"][0];			
@@ -45,8 +44,14 @@
 				array_push($albums, $album);
 			}
 			
+			$file = explode("/", $trackInfo["filenamepath"]);
+			for($j=0;$j<(count($file)-1);$j++){
+				array_shift($file);
+			}
+			$file = implode("/", $file);
+			
 			$tmp = [
-				'filename' => $trackInfo["filenamepath"],
+				'filename' => $file,
 				'title' => $trackInfo["tags"]["id3v2"]["title"][0],
 				'artist_id' => getArtistID($artist, $artists),
 				'album_id' => getAlbumID($album, $albums),
@@ -58,6 +63,7 @@
 		}else{
 			array_push($tracks, NULL);
 		}
+		echo "Processed file: {$i}/{$count} ({$file})\n";
 	}
 	
 	foreach($artists as $artist){
